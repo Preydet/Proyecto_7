@@ -1,4 +1,6 @@
 import ProductContext from "./ProductContext"
+import { useReducer } from "react"
+import ProductReducer from "./ProductReducer"
 
 const ProductState = (props) => {
     const initialState = {
@@ -11,10 +13,13 @@ const ProductState = (props) => {
             }
         ]
     }
+
+    const [globalState, dispatch] = useReducer(ProductReducer, initialState);
+    
     return (
         <ProductContext.Provider
             value={{
-                products: initialState.products
+                products: globalState.products
             }}
         >
             {props.children}
