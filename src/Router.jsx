@@ -4,6 +4,7 @@ import Home from "./components/Home";
 import ProductState from "./contexts/Product/ProductState";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
+import ProductList from "./components/Product/List/index";
 
 const Router = () => {
   return (
@@ -14,6 +15,7 @@ const Router = () => {
                 <Route index element={<Home />} />
                 <Route path="/registro" element={<Register />} />
                 <Route path="/iniciar-sesion" element={<Login />} />
+                <Route path="/productos" element={<ProductList />} />
             </Route>
         </Routes>
       </BrowserRouter>
