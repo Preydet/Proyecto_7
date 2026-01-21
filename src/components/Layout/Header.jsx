@@ -6,7 +6,7 @@ const Header = () => {
             <nav className="flex justify-between mx-8 py-4">
                 <ul className="flex items-center">
                     <li className="hidden ml-10 text-neutral-50 md:block">
-                        <Link to='/guitarras' className="font-medium">Menu</Link>
+                        <Link to='/productos' className="font-medium">Menu</Link>
                     </li>
                 </ul>
                 <section className="flex items-center justify-end">

@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 import Layout from "./components/Layout";
 import Home from "./components/Home";
 import ProductState from "./contexts/Product/ProductState";
+import Register from "./components/Auth/Register";
+import Login from "./components/Auth/Login";
 
 const Router = () => {
   return (
@@ -10,6 +12,8 @@ const Router = () => {
         <Routes>
             <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
+                <Route path="/registro" element={<Register />} />
+                <Route path="/iniciar-sesion" element={<Login />} />
             </Route>
         </Routes>
       </BrowserRouter>
