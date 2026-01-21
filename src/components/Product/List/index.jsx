@@ -1,16 +1,20 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import ProductContext from "../../../contexts/Product/ProductContext";
 
 const ProductList = () => {
   const ctx = useContext(ProductContext);
-  const { products } = ctx;
+  const { products, getProducts } = ctx;
+
+  useEffect(() => {
+    getProducts();
+  }, [])
 
   return (
     <div>
       Lista de Productos
       {
         products.map( product => (
-          <div key={product.id}>
+          <div key={product._id}>
             <h1>{product.name}</h1>
             <p>{product.price}</p>
             </div>

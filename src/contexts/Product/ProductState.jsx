@@ -14,11 +14,11 @@ const ProductState = (props) => {
     const getProducts = async () => {
         try {
             const response = await axiosClient.get('/products/readall');
-            console.log(response);
+            console.log('endpoint obtener productos', response);
 
             dispatch({
                 type: 'OBTENER_PRODUCTOS',
-                payload: response.data.products
+                payload: response.data.datos
             });
 
         } catch (error) {
