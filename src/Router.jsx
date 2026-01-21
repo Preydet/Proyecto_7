@@ -5,6 +5,7 @@ import ProductState from "./contexts/Product/ProductState";
 import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import ProductList from "./components/Product/List/index";
+import SingleProduct from "./components/Product";
 
 const Router = () => {
   return (
@@ -16,6 +17,7 @@ const Router = () => {
                 <Route path="/registro" element={<Register />} />
                 <Route path="/iniciar-sesion" element={<Login />} />
                 <Route path="/productos" element={<ProductList />} />
+                <Route path="/productos/:slug" element={<SingleProduct />} />
             </Route>
         </Routes>
       </BrowserRouter>
