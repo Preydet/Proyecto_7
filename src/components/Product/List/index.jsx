@@ -3,10 +3,21 @@ import ProductContext from "../../../contexts/Product/ProductContext";
 
 const ProductList = () => {
   const ctx = useContext(ProductContext);
-  console.log('ctx de productos:', ctx);
+  const { products } = ctx;
 
   return (
-    <div>Lista de Productos</div>
+    <div>
+      Lista de Productos
+      {
+        products.map( product => (
+          <div key={product.id}>
+            <h1>{product.name}</h1>
+            <p>{product.price}</p>
+            </div>
+        ))
+      }            
+    </div>
+        
   )
 }
 
