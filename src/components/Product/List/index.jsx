@@ -33,7 +33,7 @@ const ProductList = () => {
                                     <h3 className="text-xl font-bold text-gray-900">{product.name}</h3>
                                     <p className="text-gray-500 pb-8">{product.description}</p>
                                     <Link to={`/productos/${product.slug}`} state={{ product }} className="btn-product">
-                                        <button type="button" className="w-full">descripción</button>
+                                        <button type="button" className="w-full">Descripción</button>
                                     </Link>
                                 </div>
                             </div>
