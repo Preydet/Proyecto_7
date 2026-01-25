@@ -6,7 +6,18 @@ import axiosClient from "../../config/axios";
 
 const ProductState = (props) => {
     const initialState = {
-        products: []
+        products: [],
+        currentProduct: {
+            _id: null,
+            idProd: '',
+            name: '',
+            slug: '',
+            description: '',
+            price: 0,
+            stock: 0,
+            category: '',
+            img: '',
+        }
     }
 
     const [globalState, dispatch] = useReducer(ProductReducer, initialState);
@@ -30,6 +41,7 @@ const ProductState = (props) => {
         <ProductContext.Provider
             value={{
                 products: globalState.products,
+                currentProduct: globalState.currentProduct,
                 getProducts
             }}
         >

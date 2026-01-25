@@ -13,7 +13,9 @@ const UserState = (props) => {
             role: ""
         },
         cart: [],
-        authState: false
+        authStatus: false,
+        sessionURL: null,
+        globalLoading: false
     };
 
     const [globalState, dispatch] = useReducer(UserReducer, initialState);
@@ -50,24 +52,60 @@ const UserState = (props) => {
         }
     }
 
+    const verifyUser = async () => {
+        const token = localStorage.getItem('token');
+        if (token){
+            axiosClient.defaults.headers.common['authorization'] = token;
+         } else{
+            delete axiosClient.defaults.headers.common['uthorization'];
+            }
+        try {
+            const res = await axiosClient.get('/users/verify');
+            dispatch({
+                type: 'OBTENER_USUARIO',
+                payload: res.data.user
+            })
+        } catch (error) {
+            return;
+        }
+    }
+
+        const updateUser = async (form) => {
+            const token = localStorage.getItem('token');
+            if (token){
+            axiosClient.defaults.headers.common['authorization'] = token;
+            } else{
+            delete axiosClient.defaults.headers.common['uthorization'];
+            }
+        await axiosClient.put('/:id', form);
+    }
+
     const logout = async () => {
         dispatch({
-            type: 'LOGOUT_USUARIO'
+            type: 'CERRAR_SESION'
         });
     }
     return (
         <UsersContext.Provider
             value={{
-                user: initialState.currentUser,
+                currentUser: initialState.currentUser,
+                cart: globalState.cart,
+                authStatus: globalState.authStatus,
+                sessionURL: globalState.sessionURL,
+                globalLoading: globalState.globalLoading,
                 registerUser,
                 loginUser,
-                logout
+                logout,
+                verifyUser,
+                updateUser
             }}                
         >
             {props.children}
         </UsersContext.Provider>
     )
 }
+
+
 export default UserState;
 
 
