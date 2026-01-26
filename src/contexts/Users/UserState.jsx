@@ -22,7 +22,7 @@ const UserState = (props) => {
 
     const registerUser = async (form) => {
         try {
-            const response = await axiosClient.post(('/Users/register'), form);
+            const response = await axiosClient.post(('/users/register'), form);
             console.log('respuesta del registro', response);
 
             dispatch({
@@ -38,9 +38,10 @@ const UserState = (props) => {
 
     const loginUser = async (form) => {
         try {
-            const res = await axiosClient.post(('/Users/login'), form);
+            const res = await axiosClient.post(('/users/login'), form);
+            console.log('respuesta del login', res.data.token);
             const token = res.data.token;
-
+            
             dispatch({
                 type: 'LOGIN_EXITOSO',
                 payload: token
@@ -55,9 +56,9 @@ const UserState = (props) => {
     const verifyUser = async () => {
         const token = localStorage.getItem('token');
         if (token){
-            axiosClient.defaults.headers.common['authorization'] = token;
+            axiosClient.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + token;
          } else{
-            delete axiosClient.defaults.headers.common['uthorization'];
+            delete axiosClient.defaults.headers.common['Authorization'];
             }
         try {
             const res = await axiosClient.get('/users/verify');
@@ -70,14 +71,14 @@ const UserState = (props) => {
         }
     }
 
-        const updateUser = async (form) => {
+        const updateUser = async (id, form) => {
             const token = localStorage.getItem('token');
             if (token){
-            axiosClient.defaults.headers.common['authorization'] = token;
+            axiosClient.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + token;
             } else{
-            delete axiosClient.defaults.headers.common['uthorization'];
+            delete axiosClient.defaults.headers.common['Authorization'];
             }
-        await axiosClient.put('/:id', form);
+        await axiosClient.put(`/users/${id}`, form);
     }
 
     const logout = async () => {
@@ -88,7 +89,7 @@ const UserState = (props) => {
     return (
         <UsersContext.Provider
             value={{
-                currentUser: initialState.currentUser,
+                currentUser: globalState.currentUser,
                 cart: globalState.cart,
                 authStatus: globalState.authStatus,
                 sessionURL: globalState.sessionURL,

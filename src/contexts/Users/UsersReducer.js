@@ -1,12 +1,12 @@
 const UserReducer = (globalState, action) => {
-    switch (Key) {
+    switch (action.type) {
         case "REGISTRO_EXITOSO":
             return {
                 ...globalState,
                 mensaje: "Usuario creado correctamente"
             }
         case "LOGIN_EXITOSO":
-            localStorage.setItem('token', action.payload.token);
+            localStorage.setItem("token", action.payload);
             return {
                 ...globalState,
                 authStatus: true
