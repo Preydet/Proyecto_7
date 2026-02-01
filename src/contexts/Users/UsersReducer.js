@@ -25,6 +25,25 @@ const UserReducer = (globalState, action) => {
                 authStatus: false,
                 loanding: false
             }
+
+        case "CHANGE_STATUS_LOADING":
+            return {
+                ...globalState,
+                globalLoanding: action.payload
+            }
+
+        case "GET_CHECKOUT_SESSION":
+            return {
+                ...globalState,
+                sessionURL: action.payload
+            }
+        
+            case "GET_CART":
+            return {
+                ...globalState,
+                cart: action.payload
+            }
+
         default:
             return globalState;
     }

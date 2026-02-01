@@ -4,12 +4,17 @@ const ProductReducer = (globalState, action) => {
             return {
                 ...globalState,
                 products: action.payload
+            }              
+                
+        case 'OBTENER_PRODUCTO':
+            return {
+                ...globalState,
+                currentProduct: action.payload
             }
-    
         default:
             return globalState;
-            
-    }
+        }
 }
+
 
 export default ProductReducer;

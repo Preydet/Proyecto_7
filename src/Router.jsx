@@ -7,6 +7,10 @@ import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
 import ProductList from "./components/Product/List";
 import SingleProduct from "./components/Product/Single";
+import AuthRoute from "./routes/Auth";
+import PrivateRoute from "./routes/Private";
+import Profile from "./components/Profile";
+import Checkout from "./components/Checkout";
 
 const Router = () => {
   return (
@@ -16,10 +20,25 @@ const Router = () => {
           <Routes>
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
-                <Route path="/registro" element={<Register />} />
-                <Route path="/iniciar-sesion" element={<Login />} />
                 <Route path="/productos" element={<ProductList />} />
                 <Route path="/productos/:slug" element={<SingleProduct />} />
+                <Route path="/registro" element={<Register />} />
+                <Route 
+                  path="/iniciar-sesion"
+                  element={<AuthRoute component={Login} />}
+                />
+
+                <Route
+                  path="/Carrito"
+                  element={<PrivateRoute component={Checkout}/>}
+                />
+
+
+
+                <Route
+                  path="/perfil"
+                  element={<PrivateRoute component={Profile} />}
+                />
               </Route>
             </Routes>
          </BrowserRouter>

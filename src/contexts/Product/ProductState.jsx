@@ -24,12 +24,12 @@ const ProductState = (props) => {
 
     const getProducts = async () => {
         try {
-            const response = await axiosClient.get('/products/readall');
+            const response = await axiosClient.get('/products');
             console.log('endpoint obtener productos', response);
 
             dispatch({
                 type: 'OBTENER_PRODUCTOS',
-                payload: response.data.datos
+                payload: response.data
             });
 
         } catch (error) {
@@ -37,12 +37,20 @@ const ProductState = (props) => {
         }
     }
 
+    const setCurrentProduct = (productData) => {
+        dispatch({
+            type: "OBTENER_PRODUCTO",
+            payload: productData
+        });
+    }
+
     return (
         <ProductContext.Provider
             value={{
                 products: globalState.products,
                 currentProduct: globalState.currentProduct,
-                getProducts
+                getProducts,
+                setCurrentProduct
             }}
         >
             {props.children}

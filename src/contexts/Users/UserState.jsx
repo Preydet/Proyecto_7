@@ -49,7 +49,7 @@ const UserState = (props) => {
             return;
         } catch (error) {
             console.error(error);
-            return error.response.data.message;
+            return error.response.data.msg || error.response.data.message;
         }
     }
 
@@ -61,12 +61,13 @@ const UserState = (props) => {
             delete axiosClient.defaults.headers.common['Authorization'];
             }
         try {
-            const res = await axiosClient.get('/users/verify');
+            const res = await axiosClient.get('/users/verify-user');
             dispatch({
                 type: 'OBTENER_USUARIO',
                 payload: res.data.user
             })
         } catch (error) {
+            console.error(error);
             return;
         }
     }
@@ -86,6 +87,71 @@ const UserState = (props) => {
             type: 'CERRAR_SESION'
         });
     }
+
+    const setLoading = (status) => {
+        dispatch({
+            type: 'CHANGE_STATUS_LOADING',
+            payload: status
+        });
+    }
+
+    const getCheckoutSession = async () => {
+        const token = localStorage.getItem('token');
+            if (token){
+            axiosClient.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + token;
+            } else{
+            delete axiosClient.defaults.headers.common['Authorization'];
+            }
+        try {
+            const response = await axiosClient.get('/carts/create-checkout-session');
+
+            dispatch({
+                type: 'GET_CHECKOUT_SESSION',
+                payload: response.data.session_url
+            });
+        }catch (error) {
+            console.error(error);
+            return;
+        }
+    }
+
+    const getCart = async () => {
+        const token = localStorage.getItem('token');
+        if (token){
+            axiosClient.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + token;
+         } else{
+            delete axiosClient.defaults.headers.common['Authorization'];
+            }
+        try {
+            const response = await axiosClient.get('/carts/get-cart');
+            console.log('respuesta del carrito', response);
+
+            dispatch({
+                type: 'GET_CART',
+                payload: response.data.cart.products
+            });
+        }catch (error) {
+            console.error(error);
+            return;
+        }
+    }
+
+    const editCart = async (data) => {
+        const token = localStorage.getItem('token');
+        if (token){
+            axiosClient.defaults.headers.common['Authorization'] = 'Bearer' + ' ' + token;
+         } else{
+            delete axiosClient.defaults.headers.common['Authorization'];
+            }
+        try {
+            const response = await axiosClient.put('/carts/edit-cart', { products: data });
+            await getCart();
+            return response.data.msg;
+        }catch (error) {
+                return;
+        }
+    }
+
     return (
         <UsersContext.Provider
             value={{
@@ -98,14 +164,17 @@ const UserState = (props) => {
                 loginUser,
                 logout,
                 verifyUser,
-                updateUser
+                updateUser,
+                setLoading,
+                getCheckoutSession,
+                getCart,
+                editCart
             }}                
         >
             {props.children}
         </UsersContext.Provider>
     )
 }
-
 
 export default UserState;
 
