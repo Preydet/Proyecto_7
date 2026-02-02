@@ -1,10 +1,10 @@
 import { useState, useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UserContext from "../../contexts/Users/UsersContext";
 
 export default function Login() {
   const ctx = useContext(UserContext);
-
+  const navigate = useNavigate();
   const { loginUser } = ctx;
 
   const [logUser, setLogUser] = useState({
@@ -25,11 +25,15 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMsg("");
 
     const res = await loginUser(logUser);
 
-    if (res) setErrorMsg(res);
-    return;
+    if (res) {
+      setErrorMsg(res);
+    } else {
+      navigate("/", { replace: true });
+    }
   };
 
   return (

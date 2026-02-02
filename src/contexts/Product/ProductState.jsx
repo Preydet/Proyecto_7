@@ -29,7 +29,7 @@ const ProductState = (props) => {
 
             dispatch({
                 type: 'OBTENER_PRODUCTOS',
-                payload: response.data
+                payload: response.data.products
             });
 
         } catch (error) {

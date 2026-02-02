@@ -23,13 +23,13 @@ const UserReducer = (globalState, action) => {
                 ...globalState,
                 currentUser: null,
                 authStatus: false,
-                loanding: false
+                loading: false
             }
 
         case "CHANGE_STATUS_LOADING":
             return {
                 ...globalState,
-                globalLoanding: action.payload
+                globalLoading: action.payload
             }
 
         case "GET_CHECKOUT_SESSION":

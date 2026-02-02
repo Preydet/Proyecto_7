@@ -49,7 +49,8 @@ const UserState = (props) => {
             return;
         } catch (error) {
             console.error(error);
-            return error.response.data.msg || error.response.data.message;
+            const msg = error.response?.data?.msg ?? error.response?.data?.message ?? error.message ?? 'Error al iniciar sesión. Comprueba la URL del backend y que el servidor esté en marcha.';
+            return msg;
         }
     }
 
@@ -66,8 +67,7 @@ const UserState = (props) => {
                 type: 'OBTENER_USUARIO',
                 payload: res.data.user
             })
-        } catch (error) {
-            console.error(error);
+        } catch (error) {            
             return;
         }
     }
@@ -148,6 +148,7 @@ const UserState = (props) => {
             await getCart();
             return response.data.msg;
         }catch (error) {
+            console.error(error);
                 return;
         }
     }

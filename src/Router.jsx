@@ -11,6 +11,8 @@ import AuthRoute from "./routes/Auth";
 import PrivateRoute from "./routes/Private";
 import Profile from "./components/Profile";
 import Checkout from "./components/Checkout";
+import SuccesPage from "./components/SuccesPage";
+import ErrorPage from "./components/ErrorPage";
 
 const Router = () => {
   return (
@@ -23,6 +25,8 @@ const Router = () => {
                 <Route path="/productos" element={<ProductList />} />
                 <Route path="/productos/:slug" element={<SingleProduct />} />
                 <Route path="/registro" element={<Register />} />
+                <Route path="/pago-exitoso" element={<SuccesPage />} />
+                <Route path="/pago-rechazado" element={<ErrorPage />} />
                 <Route 
                   path="/iniciar-sesion"
                   element={<AuthRoute component={Login} />}
