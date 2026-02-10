@@ -5,17 +5,50 @@ import slides from "../../data/slides";
 const Home = () => {
     return (
         <>
-            <Carousel slides={slides}/>
-            <main className="text-center px-4 mt-24 mx-auto">
-                <h1 className="text-5xl font-extrabold text-gray-900">Aplicacion de Productos Tecnológicos</h1>
-                <p className="mt-3 mx-auto text-gray-500">Accede al menu y revisa todas nuestros productos.</p>
-                <section className="mt-16 mx-auto max-w-md">
-                    <article>
-                        <Link to='/productos' className="btn-product">Ver el menu de productos</Link>
-                    </article>
-                </section>
-            </main>
+        <section className="bg-slate-50">
+            <div className="max-w-7xl mx-auto px-4 py-16">
+                <div className="grid lg:grid-cols-2 gap-10 items-center">
+
+                    <div className="text-center">
+                        <h1 className="text-5xl font-extrabold text-gray-900">
+                            PC & Tech
+                        </h1>
+                        <p className="mt-4 text-lg text-gray-600">
+                            Descubre lo último en tecnología, ofertas exclusivas y lanzamientos
+                        </p>
+
+                        <div className="mt-8 flex flex-wrap gap-4">
+                            <Link to="/productos" className="btn-product">
+                            Ver productos
+                            </Link>
+                            <Link to="registro" className="btn-secondary">
+                            Crear Cuenta
+                            </Link>
+                        </div>
+                    </div>
+
+                    <div className="hidden lg:block">
+                        <div className="rounded-xl bg-gradient-to-br from-slate-900 to-gray-700 p-8 text-center">
+                            <p className="text-white text-lg font-semibold">
+                                ¡Tecnología al alcance de tu mano!
+                            </p>
+                            <p className="text-white mt-2">
+                                Revisa nuestras ofertas y añade tus favoritos al carrito
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <section className="bg-white py-12">
+            <div className="max-w-7xl mx-auto px-4">
+                <Carousel slides={slides}/>
+            </div>
+        </section>
         </>
-    )
-}
+    );
+};
 export default Home;
