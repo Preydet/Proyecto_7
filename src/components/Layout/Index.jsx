@@ -4,7 +4,7 @@ import Footer from "./Footer";
 
 const Layout = () => {
     return (
-        <div className ="flex flex-col h-screen justify-between">
+        <div className ="flex flex-col h-screen justify-between bg.slate-50">
             <Header />
             <main className="mb-auto">
                 <Outlet/>

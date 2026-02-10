@@ -10,8 +10,7 @@ const UserState = (props) => {
             email: "",
             country: "",
             zipCode: 0,
-            role: ""
-        },
+            },
         cart: [],
         authStatus: false,
         sessionURL: null,

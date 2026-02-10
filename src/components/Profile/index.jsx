@@ -8,15 +8,14 @@ export default function Profile() {
 
   const { updateUser } = userCtx;
 
-  const { username, email, country, address, zipcode, role} =
+  const { username, email, country, address, zipCode } =
     userCtx.currentUser;
 
   const [userForm, setUserForm] = useState({
     username: "",
     country: "",
     address: "",
-    zipcode: "",
-    role: "",
+    zipCode: "",
     });
 
   useEffect(() => {
@@ -26,8 +25,8 @@ export default function Profile() {
         username,
         country,
         address,
-        zipcode,
-        role,
+        zipCode,
+        
       });
     };
 

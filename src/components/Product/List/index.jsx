@@ -19,7 +19,7 @@ const ProductList = () => {
                 ) : (
                     products.map(product => {
                         return (
-                            <div key={product._id} className="border flex flex-col">
+                            <div key={product._id} className="border border-slate-200 shadow-sm rounded-lg overflow-hidden">
                                 <div className="bg-gray-200">
                                     <Link to={`/productos/${product.slug}`} state={{ product }}>
                                         <img

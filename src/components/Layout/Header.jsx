@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext, Fragment } from "react";
 import { Link } from "react-router-dom";
+import Logo from "./Logo";
 
 import UserContext from "../../contexts/Users/UsersContext";
 
@@ -33,13 +34,14 @@ export default function Header() {
   }, [cart]);
 
   return (
-    <header className="bg-green-600">
+    <header className="bg-slate-900">
       <nav className="flex justify-between mx-8 py-4">
         <ul className="flex items-center">
-          <li className="hidden ml-10 text-neutral-100 md:block">
-            <Link to="/productos" className="font-medium">
-              Productos
-            </Link>
+          <li className="ml-2">
+            <Link to="/">
+              <Logo/>
+            </Link>  
+            
           </li>
         </ul>
 

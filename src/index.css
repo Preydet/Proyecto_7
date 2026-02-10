@@ -2,11 +2,15 @@
 
 @layer components {
     .btn-product {
-        @apply px-8 py-4 text-center font-medium text-white bg-black w-full;
+        @apply px-8 py-4 text-center font-medium text-white bg-slate-900 w-full hover:bg-slate-800;
+    }
+
+    .btn-secondary {
+        @apply px-8 py-4 text-center font-medium text-slate-900 bg-slate-100 w-full hover:bg-slate-200;
     }
 
     .btn-nav {
-        @apply bg-black px-4 py-2 font-medium text-white ml-4 lg:px-4;
+        @apply bg-transparent px-4 py-2 font-medium text-slate-50 hover:text-white border border-slate-700 rounded-md;
     }
     .form-label {
         @apply block text-sm;
@@ -20,7 +24,7 @@
         @apply w-full flex justify-center py-2 px-4 text-sm font-medium text-white bg-black;
     }
      .btn-cart {
-        @apply ml-4 flex items-center;
+        @apply ml-4 flex items-center text-white;
     }
 
     .btn-cart-quantity {
@@ -30,4 +34,9 @@
     .checkout-figure-img {
         @apply w-24 h-24 rounded-lg object-center object-cover sm:w-32 sm:h-32;
   }
+
+  body {
+  @apply font-sans;
+}
+
 }
