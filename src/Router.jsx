@@ -33,7 +33,7 @@ const Router = () => {
                 />
 
                 <Route
-                  path="/Carrito"
+                  path="/carrito"
                   element={<PrivateRoute component={Checkout}/>}
                 />
 
