@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 
 import UserContext from "../../contexts/Users/UsersContext";
+import ProductContext from "../../contexts/Product/ProductContext";
 
 export default function Header() {
   const {
@@ -15,6 +16,7 @@ export default function Header() {
     setLoading,
   } = useContext(UserContext);
 
+  const { categories, setCategory } = useContext(ProductContext);
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
@@ -33,6 +35,10 @@ export default function Header() {
     setTotal(totalItems);
   }, [cart]);
 
+  useEffect(() => {
+    console.log("Categorías disponibles:", categories);
+}, [categories]);
+
   return (
     <header className="bg-slate-900">
       <nav className="flex justify-between mx-8 py-4">
@@ -44,6 +50,18 @@ export default function Header() {
             
           </li>
         </ul>
+
+        <section className="flex items-center justify-center space-x-6 flex-wrap">
+          {categories.slice(0, 6).map((category, index) =>(
+            <button
+              key={index}
+              className="text-lg text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-all"
+              onClick={() => setCategory(category)}
+            >
+              {category}
+            </button>
+          ))}
+        </section>
 
         <section className="flex items-center justify-end">
           {authStatus ? (

@@ -11,6 +11,19 @@ const ProductReducer = (globalState, action) => {
                 ...globalState,
                 currentProduct: action.payload
             }
+        
+        case 'OBTENER_CATEGORIAS':
+            return {
+                ...globalState,
+                categories: action.payload
+            }
+        
+        case 'CAMBIAR_CATEGORIA':
+            return {
+                ...globalState,
+                selectedCategory: action.payload
+            }
+            
         default:
             return globalState;
         }
