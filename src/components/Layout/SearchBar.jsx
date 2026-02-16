@@ -1,19 +1,57 @@
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+// SearchBar.jsx
+import { useState, useEffect } from "react";
 
-const SearchBar = () => {
-    return (
-        <div className="relative">
-            <input 
-                type="text"
-                placeholder="Buscar productos..."
-                className="w-64 py-2 pl-10 pr-4 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500 bg-white text-black"
-            />
-            <button className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-blue-500">
-            <MagnifyingGlassIcon className="w-5 h-5"/>
-            </button>      
+export default function SearchBar({ products, onSearch }) {
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
-        </div>
+  useEffect(() => {
+    if (!query.trim()) {
+      setSuggestions([]);
+      return;
+    }
+
+    const filtered = products.filter(
+      (p) =>
+        p.name.toLowerCase().includes(query.toLowerCase()) ||
+        (p.description && p.description.toLowerCase().includes(query.toLowerCase()))
     );
-};
+    setSuggestions(filtered.slice(0, 5)); // mostrar max 5 sugerencias
+  }, [query, products]);
 
-export default SearchBar;
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!query.trim()) return;
+    onSearch(query);
+    setQuery("");
+    setSuggestions([]);
+  };
+
+  return (
+    <div className="relative w-full">
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Buscar productos..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          className="w-full py-2 pl-4 pr-4 border rounded-full bg-white text-black focus:ring-2 focus:ring-blue-500 placeholder-gray-500"
+        />
+      </form>
+
+      {suggestions.length > 0 && (
+        <ul className="absolute bg-white border w-full mt-1 rounded-md max-h-48 overflow-auto z-50">
+          {suggestions.map((s, i) => (
+            <li
+              key={i}
+              className="px-4 py-2 hover:bg-gray-200 cursor-pointer"
+              onClick={() => onSearch(s.name)}
+            >
+              {s.name}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}

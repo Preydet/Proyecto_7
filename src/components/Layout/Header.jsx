@@ -17,7 +17,7 @@ export default function Header() {
     setLoading,
   } = useContext(UserContext);
 
-  const { categories, setCategory } = useContext(ProductContext);
+  const { categories, setCategory, getProducts, products } = useContext(ProductContext);
   const [total, setTotal] = useState(0);
 
   const navigate = useNavigate();
@@ -38,6 +38,11 @@ export default function Header() {
     setTotal(totalItems);
   }, [cart]);
 
+  const handleSearch = (query) => {
+    setCategory("");
+    getProducts(query);
+    navigate("/productos")
+  };
   
   return (
     <header className="bg-slate-900">
@@ -53,7 +58,10 @@ export default function Header() {
 
     {/* Barra de búsqueda */}
     <section className="flex items-center justify-center w-full sm:w-2/3 md:w-1/2 mx-auto mb-4 sm:mb-0">
-      <SearchBar />
+      <SearchBar 
+          onSearch={handleSearch}
+          products={products}      
+      />
     </section>
 
     {/* Sección de botones (Perfil, Carrito, Iniciar sesión, Crear cuenta) */}
