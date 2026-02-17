@@ -13,7 +13,7 @@ const ProductList = () => {
   return (
     <div>
       <>
-            <section className="max-w-7xl mx-auto py-16 px-8 grid grid-cols-1 gap-y-4 gap-x-12 sm:grid-cols-2 sm:gap-y-12 lg:grid-cols-2 flex-column">
+            <section className="max-w-7xl mx-auto py-16 px-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {products.length === 0 ? (
                     <p>No hay productos disponibles</p>
                 ) : (

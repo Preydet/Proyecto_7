@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./Logo";
-import SearchBar from "./SearchBar";
 
 import UserContext from "../../contexts/Users/UsersContext";
 import ProductContext from "../../contexts/Product/ProductContext";
@@ -17,7 +16,7 @@ export default function Header() {
     setLoading,
   } = useContext(UserContext);
 
-  const { categories, setCategory, getProducts, products } = useContext(ProductContext);
+  const { categories, setCategory } = useContext(ProductContext);
   const [total, setTotal] = useState(0);
 
   const navigate = useNavigate();
@@ -37,13 +36,7 @@ export default function Header() {
     const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
     setTotal(totalItems);
   }, [cart]);
-
-  const handleSearch = (query) => {
-    setCategory("");
-    getProducts(query);
-    navigate("/productos")
-  };
-  
+    
   return (
     <header className="bg-slate-900">
   <nav className="flex justify-between items-center mx-8 py-4">
@@ -55,15 +48,7 @@ export default function Header() {
         </Link>
       </li>
     </ul>
-
-    {/* Barra de búsqueda */}
-    <section className="flex items-center justify-center w-full sm:w-2/3 md:w-1/2 mx-auto mb-4 sm:mb-0">
-      <SearchBar 
-          onSearch={handleSearch}
-          products={products}      
-      />
-    </section>
-
+    
     {/* Sección de botones (Perfil, Carrito, Iniciar sesión, Crear cuenta) */}
     <section className="flex items-center justify-end w-full sm:w-auto">
       {authStatus ? (
