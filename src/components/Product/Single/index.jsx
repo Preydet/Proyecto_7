@@ -16,7 +16,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     if (!product) {
-      // Si el usuario recarga la página y no hay data, redirigir
+      
       navigate("/productos");
       return;
     }
@@ -50,12 +50,12 @@ const SingleProduct = () => {
     let updatedCart;
 
     if (existingItemIndex !== -1) {
-      // Si ya existe, actualiza la cantidad
+      
       updatedCart = cart.map((el, i) =>
         i === existingItemIndex ? { ...el, quantity: item.quantity } : el
       );
     } else {
-      // Si no existe, agrega el nuevo ítem
+      
       updatedCart = [...cart, item];
     }
 
@@ -69,7 +69,7 @@ const SingleProduct = () => {
   return (
     <main className="max-w-5xl mx-auto pt-16 pb-24 px-6">
       <div className="grid lg:grid-cols-2 gap-12">
-        {/* Info */}
+        
         <section>
           <h1 className="text-4xl font-bold">{name}</h1>
           <p className="text-gray-600 mt-4">{description}</p>
@@ -77,7 +77,7 @@ const SingleProduct = () => {
             Precio: {formatCLP(price)}
           </p>
 
-          {/* Select cantidad */}
+          
           {authStatus && (
             <form onSubmit={handleSubmit} className="mt-8">
               <label className="block mb-2 font-medium text-gray-700">
@@ -114,7 +114,6 @@ const SingleProduct = () => {
           )}
         </section>
 
-        {/* Imagen */}
         <figure>
           <img
             src={img}
