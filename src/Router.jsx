@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
-import Layout from "./components/Layout";
+import Layout from "./components/Layout/Index.jsx";
 import Home from "./components/Home";
 import UserState from "./contexts/Users/UserState";
 import ProductState from "./contexts/Product/ProductState";
