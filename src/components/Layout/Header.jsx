@@ -39,7 +39,7 @@ export default function Header() {
   return (
     <header className="bg-slate-900">
       <nav className="flex justify-between items-center mx-8 py-4">
-        {/* Logo */}
+        
         <ul className="flex items-center">
           <li className="ml-2">
             <Link to="/">
@@ -47,8 +47,7 @@ export default function Header() {
             </Link>
           </li>
         </ul>
-
-        {/* Botones perfil / login */}
+        
         <section className="flex items-center justify-end w-full sm:w-auto">
           {authStatus ? (
             <>
@@ -83,8 +82,7 @@ export default function Header() {
               </Link>
             </>
           )}
-
-          {/* Carrito */}
+          
           <Link to="/carrito" className="btn-cart ml-4">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -98,8 +96,7 @@ export default function Header() {
           </Link>
         </section>
       </nav>
-
-      {/* Botones de categorías */}
+      
       <section className="flex items-center justify-center space-x-4 sm:space-x-6 flex-wrap mb-4 sm:mb-0">
         {categories && categories.length > 0 ? (
           categories.map((category, index) => (

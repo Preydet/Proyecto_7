@@ -29,7 +29,7 @@ const Carousel = ({ slides }) => {
                             className="w-full h-96 object-cover rounded-lg"
                         />
                         <div className="absolute inset-0 flex items-end">
-                            <div calssName="m-6 bg-black/60 backdrop-blur-sm p-5 rounded-lg max-w-lg">
+                            <div className="m-6 bg-black/60 backdrop-blur-sm p-5 rounded-lg max-w-lg">
                             <h2 className="text-white text 2xl font-bold leading-tight">
                                 {slide.name}
                             </h2>

@@ -3,9 +3,8 @@ import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn } from "react-icons/f
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-200 py-12">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">        
         
-        {/* Información de la tienda */}
         <div>
           <h3 className="text-xl font-bold mb-4">PC & Tech</h3>
           <p className="text-gray-400">
@@ -14,8 +13,7 @@ export default function Footer() {
             Componentes, periféricos y accesorios de la mejor calidad.
           </p>
         </div>
-
-        {/* Contacto */}
+        
         <div>
           <h4 className="text-lg font-semibold mb-4">Contacto</h4>
           <ul className="space-y-2 text-gray-400">
@@ -25,8 +23,7 @@ export default function Footer() {
             <li>Soporte: soporte@pcandtech.com</li>
           </ul>
         </div>
-
-        {/* Horarios */}
+        
         <div>
           <h4 className="text-lg font-semibold mb-4">Horario de Atención</h4>
           <ul className="space-y-2 text-gray-400">
@@ -35,8 +32,7 @@ export default function Footer() {
             <li>Domingo: Cerrado</li>
           </ul>
         </div>
-
-        {/* Redes Sociales */}
+        
         <div>
           <h4 className="text-lg font-semibold mb-4">Síguenos</h4>
           <div className="flex space-x-4">
@@ -56,8 +52,7 @@ export default function Footer() {
         </div>
 
       </div>
-
-      {/* Separador */}
+      
       <div className="border-t border-gray-700 mt-8 pt-6 text-center text-gray-500 text-sm">
         © 2026 PC & Tech. Todos los derechos reservados.
       </div>

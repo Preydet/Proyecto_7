@@ -6,14 +6,12 @@ const ProductList = () => {
   const { products, getProducts, category } = useContext(ProductContext);
   const [displayProducts, setDisplayProducts] = useState([]);
 
-  // Cargar productos al montar
-  useEffect(() => {
+    useEffect(() => {
     getProducts();
   }, []);
 
-  // Filtrar productos cada vez que cambien products o category
-  useEffect(() => {
-    if (!products) return; // esperar que lleguen los productos
+    useEffect(() => {
+    if (!products) return; 
 
     if (category) {
       const filtered = products.filter((p) => p.category === category);
