@@ -7,7 +7,6 @@ import ProductContext from "../../contexts/Product/ProductContext";
 
 export default function Header() {
   const {
-    currentUser,
     cart,
     authStatus,
     verifyUser,
