@@ -132,4 +132,3 @@ Si deseas contribuir al proyecto, por favor realiza un fork del repositorio y en
 Autor
 Pablo Reydet Vásquez  
 GitHub: https://github.com/Preydet  
-LinkedIn: https://www.linkedin.com/in/pabloreydet/
